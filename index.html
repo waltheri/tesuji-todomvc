@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>tesuji.js • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+	</head>
+	<body>
+		<section class="todoapp">
+			<header class="header">
+				<h1>todos</h1>
+				<input class="new-todo" placeholder="What needs to be done?" autofocus data-value="m.newTodo" data-onchange="m.addTodo()">
+			</header>
+			<!-- This section should be hidden by default and shown when there are todos -->
+			<section class="main" data-if="m.todos.length">
+				<input class="toggle-all" type="checkbox" data-checked="m.getIncompleteCount() == 0" data-onclick="m.toggleAll()">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul class="todo-list" data-with="m.filteredTodos">
+					<!-- These are here just to show the structure of the list items -->
+					<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+					<li data-class="{completed: m.isCompleted, editing: m.isEditing}">
+						<div class="view">
+							<input class="toggle" type="checkbox" data-checked="m.isCompleted" data-onclick="m.isCompleted = !m.isCompleted">
+							<label data-text="m.text" data-ondblclick="m.isEditing = true"></label>
+							<button class="destroy" data-onclick="p.removeTodo(m)"></button>
+						</div>
+						<input class="edit" value="" data-value="m.text" data-onblur="m.isEditing = false" data-onchange="m.isEditing = false" data-focus="m.isEditing">
+					</li>
+				</ul>
+			</section>
+			<!-- This footer should hidden by default and shown when there are todos -->
+			<footer class="footer" data-if="m.todos.length">
+				<!-- This should be `0 items left` by default -->
+				<span class="todo-count"><strong data-text="m.getIncompleteCount()">0</strong> item left</span>
+				<!-- Remove this if you don't implement routing -->
+				<ul class="filters">
+					<li>
+						<a data-class="{selected: m.page == 'all'}" href="#/" data-onclick="m.setPage('all')">All</a>
+					</li>
+					<li>
+						<a data-class="{selected: m.page == 'active'}" href="#/active" data-onclick="m.setPage('active')">Active</a>
+					</li>
+					<li>
+						<a data-class="{selected: m.page == 'completed'}" href="#/completed" data-onclick="m.setPage('completed')">Completed</a>
+					</li>
+				</ul>
+				<!-- Hidden if no completed items are left ↓ -->
+				<button class="clear-completed" data-onclick="m.removeCompleted()">Clear completed</button>
+			</footer>
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<p>Created by <a href="http://todomvc.com">Jan Prokop</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+
+		<!-- Scripts here. Don't remove ↓ -->
+		<!--script src="node_modules/todomvc-common/base.js"></script-->
+		<script src="app.js"></script>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+/* debug CSS */
+
+.tesuji-dump {
+	font-family: monospace;
+}
+
+.tesuji-dump > .tesuji-class {
+	font-size: 120%;
+	margin-left: 5px;
+}
+
+.tesuji-dump-list {
+	list-style-type: none;
+	padding-left: 20px;
+	margin: 0;
+}
+
+.tesuji-dump-dependency, .tesuji-dump-list {
+	cursor: auto;
+} 
+
+.tesuji-dump-list li:hover {
+	background-color: rgba(0,0,0,0.025);
+}
+
+li.tesuji-has-children {
+	cursor: pointer;
+}
+
+.tesuji-has-children > .tesuji-dump-list, .tesuji-has-children > .tesuji-dump-dependency {
+	display: none;
+}
+
+.tesuji-open > .tesuji-dump-list, 
+.tesuji-open > .tesuji-dump-dependency {
+	display: block;
+}
+
+.tesuji-has-children::before {
+	content: "";
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	/*border-right: 5px solid transparent;*/
+	border-left: 5px solid black;
+	display: inline-block;
+	margin-right: 7px;
+	margin-left: -12px;
+}
+
+.tesuji-has-children.tesuji-open::before {
+	border-top: 5px solid black;
+	border-bottom: none;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	margin-right: 5px;
+	margin-left: -15px;
+}
+
+.tesuji-dump-dependency, .tesuji-notown {
+	opacity: 0.70;
+} 
+
+.tesuji-dump-dependency::before {
+	float: right;
+	content: "Observers";
+	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 2px;
+	border-bottom-left-radius: 4px;
+	opacity: 0.5;
+}
+
+.tesuji-property {
+	color: #990099;
+}
+
+.tesuji-class {
+	font-style: italic;
+}
+
+.tesuji-number, .tesuji-boolean {
+	color: blue;
+}
+
+.tesuji-string {
+	color: #BB0000;
+}
+
+.tesuji-dump-list a {
+	color: #000099;
+}
